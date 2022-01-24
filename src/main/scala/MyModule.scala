@@ -50,6 +50,10 @@ object MyModule {
     go(0)
   }
 
+  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+    a => b => f(a,b)
+  }
+
   def main(args: Array[String]): Unit =
     println(formatResult("The absolute value", -42, abs))
     println(formatResult("factorial", 7, factorial))
