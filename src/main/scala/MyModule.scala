@@ -14,11 +14,21 @@ object MyModule {
     go(n, 1)
   }
 
+  def fib(n: Int): Int = {
+    @tailrec
+    def go(n: Int, prev: Int, cur: Int): Int = {
+      if (n == 0) prev
+      else go(n - 1, cur, prev + cur)
+    }
+
+    go(n, 0, 1)
+  }
+
   private def formatAbs(x: Int) = {
     val msg = "The absolute value of %d is %d"
     msg.format(x, abs(x))
   }
 
   def main(args: Array[String]): Unit =
-    println(formatAbs(-42))
+    println(fib(6))
 }
