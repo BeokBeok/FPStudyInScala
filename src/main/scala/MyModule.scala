@@ -58,6 +58,10 @@ object MyModule {
     (a, b) => f(a)(b)
   }
 
+  def compose[A, B, C](f: B => C, g: A => B): A => C = {
+    a => f(g(a))
+  }
+
   def main(args: Array[String]): Unit =
     println(formatResult("The absolute value", -42, abs))
     println(formatResult("factorial", 7, factorial))
