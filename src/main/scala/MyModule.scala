@@ -29,6 +29,17 @@ object MyModule {
     msg.format(x, abs(x))
   }
 
+  private def formatFactorial(n: Int) = {
+    val msg = "The factorial of %d is %d"
+    msg.format(n, factorial(n))
+  }
+
+  def formatResult(name: String, n: Int, f: Int => Int): String = {
+    val msg = "The %s of %d is %d."
+    msg.format(name, n, f(n))
+  }
+
   def main(args: Array[String]): Unit =
-    println(fib(6))
+    println(formatResult("The absolute value", -42, abs))
+    println(formatResult("factorial", 7, factorial))
 }
