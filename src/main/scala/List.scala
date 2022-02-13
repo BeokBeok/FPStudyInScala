@@ -44,6 +44,12 @@ object List {
     case _ => l
   }
 
+  def init[A](l: List[A]): List[A] = l match {
+    case Nil => sys.error("init of empty list")
+    case Cons(_, Nil) => Nil
+    case Cons(head, tail) => Cons(head, init(tail))
+  }
+
   def main(args: Array[String]): Unit =
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x
