@@ -23,6 +23,11 @@ object List {
     case Cons(_, t) => t
   }
 
+  def setHead[A](l: List[A], h: A): List[A] = l match {
+    case Nil => sys.error("setHead on empty list")
+    case Cons(_, t) => Cons(h, t)
+  }
+
   def main(args: Array[String]): Unit =
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x
