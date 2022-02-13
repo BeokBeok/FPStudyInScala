@@ -38,6 +38,12 @@ object List {
       case Cons(_, t) => drop(t, n-1)
     }
 
+  @tailrec
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Cons(head, tail) if f(head) => dropWhile(tail, f)
+    case _ => l
+  }
+
   def main(args: Array[String]): Unit =
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x
