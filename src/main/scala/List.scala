@@ -58,6 +58,12 @@ object List {
   def length[A](as: List[A]): Int =
     foldRight(as, 0)((_, acc) => acc + 1)
 
+  @tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
+    case Nil => z
+    case Cons(head, tail) => foldLeft(tail, f(z, head))(f)
+  }
+
   def main(args: Array[String]): Unit =
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x
