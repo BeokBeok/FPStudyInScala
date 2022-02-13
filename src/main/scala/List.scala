@@ -64,6 +64,18 @@ object List {
     case Cons(head, tail) => foldLeft(tail, f(z, head))(f)
   }
 
+  def sum1(ns: List[Int]) =
+    foldRight(ns, 0)(_ + _)
+
+  def product1(ns: List[Double]) =
+    foldRight(ns, 1.0)(_ * _)
+
+  def sum2(ns: List[Int])=
+    foldLeft(ns, 0)(_ + _)
+
+  def product2(ns: List[Double]) =
+    foldLeft(ns, 1.0)(_ * _)
+
   def main(args: Array[String]): Unit =
     val x = List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _))) => x
